@@ -1,3 +1,4 @@
+
 module.exports = {
-    get: (req, res) => res.send('Home page')
+    getMessages: (req, res) => res.render('index', {messages: messages})
 }
