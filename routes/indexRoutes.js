@@ -23,7 +23,11 @@ router.get('/new', (req, res) => {
     res.render('form')
 })
 
-router.post('/new')
+router.post('/new', (req, res) => {
+    messages.push({ text: req.body.userMessage, user: req.body.userName, added: new Date() })
+    // send users back to homepage
+    res.redirect('/')
+})
 
 
 module.exports = router 
