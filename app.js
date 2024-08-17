@@ -11,10 +11,6 @@ const sql = postgres({
     port: 5432,
     ssl: 'require',
   });
-  async function getPgVersion() {
-    const result = await sql`select version()`;
-  }
-  getPgVersion();
 
 // app setup
 const express = require('express')
