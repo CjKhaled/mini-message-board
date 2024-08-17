@@ -1,4 +1,22 @@
+// environment var and server setup
 require('dotenv').config()
+const postgres = require('postgres')
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
+
+const sql = postgres({
+    host: PGHOST,
+    database: PGDATABASE,
+    username: PGUSER,
+    password: PGPASSWORD,
+    port: 5432,
+    ssl: 'require',
+  });
+  async function getPgVersion() {
+    const result = await sql`select version()`;
+  }
+  getPgVersion();
+
+// app setup
 const express = require('express')
 const path = require('node:path')
 const app = express()
