@@ -18,23 +18,32 @@ async function getMessages(req, res) {
     res.render('index', { messages: messages, hideOpen: false })
 }
 
-module.exports = {
-    getMessages
+function getForm(req, res) {
+    res.render('form')
 }
 
+async function getSingleMessage(req, res) {
+    const messageID = parseInt(req.params.messageID)
+    const message = await db.getSingleMessage(messageID)
+    res.render('message', {message: message[0], hideOpen: true})
+}
 
-// module.exports = {
-//     getMessages: (req, res) => res.render('index', {messages: messages, hideOpen: false}),
-//     getForm: (req, res) => res.render('form'),
-//     getSingleMessage: (req, res) => {
-//         const messageID = req.params.messageID
-//         const message = messages[messageID]
-//         res.render('message', {message: message, hideOpen: true})
-//     },
-//     postNewMessage: (req, res) => {
-//         messages.push({ id: messages.length, text: req.body.userMessage, user: req.body.userName, added: new Date() })
-    
-//         // send users back to homepage
-//         res.redirect('/')
-//     }
-// }
+const postNewMessage = [validateUser, async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).render('form', { errors: errors.array() })
+    }
+
+    const text = req.body.userMessage
+    const user = req.body.userName
+    await db.addMessage(user, text)
+    res.redirect('/')
+}]
+
+
+module.exports = {
+    getMessages,
+    getForm,
+    getSingleMessage,
+    postNewMessage
+}

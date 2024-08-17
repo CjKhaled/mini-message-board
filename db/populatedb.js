@@ -1,5 +1,7 @@
 const { Client } = require('pg')
 const { argv } = require('process')
+require('dotenv').config()
+
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
