@@ -1,11 +1,23 @@
-<form action="/new" method="post">
-    <fieldset>
-        <legend>Add A Message</legend>
-        <label for="userName">User:</label>
-        <input type="text" id="userName" name="userName">
-        <label for="userMessage">Message:</label>
-        <input type="text" id="userMessage" name="userMessage">
-        <input type="submit" value="Submit">
-    </fieldset>
-    
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Message</title>
+</head>
+<body>
+    <h1>Add New Message</h1>
+    <%- include("partials/errors.ejs") %>
+    <form action="/new" method="post">
+        <fieldset>
+            <legend>Add A Message</legend>
+            <label for="userName">User:</label>
+            <input type="text" id="userName" name="userName">
+            <label for="userMessage">Message:</label>
+            <input type="text" id="userMessage" name="userMessage">
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+    <a href="/">Back to home</a>
+</body>
+</html>
