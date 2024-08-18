@@ -1,5 +1,7 @@
 const { Pool } = require('pg')
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
+
 
 module.exports = new Pool({
-    connectionString: `postgresql://${process.env.DB_USER}:${process.env.PASSWORD}@${process.env.DB_HOST}:${process.env.PORT}/${process.env.DATABASE}`
-})
+  connectionString: `postgresql://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?sslmode=require`
+});
