@@ -5,6 +5,12 @@ require('dotenv').config()
 const express = require('express')
 const path = require('node:path')
 const app = express()
+
+// statics
+const assetsPath = path.join(__dirname, "public")
+app.use(express.static(assetsPath))
+
+// routers
 const indexRouter = require('./routes/indexRoutes')
 
 
