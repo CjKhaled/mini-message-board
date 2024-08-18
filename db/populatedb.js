@@ -1,6 +1,7 @@
 const { Client } = require('pg')
 const { argv } = require('process')
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname + "../.env") })
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
 
 
