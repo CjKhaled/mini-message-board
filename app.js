@@ -1,8 +1,5 @@
 // environment var
 require('dotenv').config()
-const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
-console.log('this from da app')
-console.log(PGHOST, PGDATABASE, PGUSER, PGPASSWORD)
 
 // app setup
 const express = require('express')
