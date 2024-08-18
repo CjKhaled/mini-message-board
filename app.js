@@ -1,16 +1,8 @@
-// environment var and server setup
+// environment var
 require('dotenv').config()
-const postgres = require('postgres')
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
-
-const sql = postgres({
-    host: PGHOST,
-    database: PGDATABASE,
-    username: PGUSER,
-    password: PGPASSWORD,
-    port: 5432,
-    ssl: 'require',
-  });
+console.log('this from da app')
+console.log(PGHOST, PGDATABASE, PGUSER, PGPASSWORD)
 
 // app setup
 const express = require('express')
